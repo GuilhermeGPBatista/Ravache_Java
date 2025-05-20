@@ -8,6 +8,9 @@ public class Main {
 
         System.out.print("Percurso em pré-ordem: ");
         arvore.percorrerPreOrdem();
+
+        System.out.print("\nPercurso em ordem: ");
+        arvore.percorrerEmOrdem();
     }
 }
 

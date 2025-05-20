@@ -32,4 +32,19 @@ public class ArvoreBinaria {
             percorrerPreOrdem(no.direito);
         }
     }
-}
+
+        public void percorrerEmOrdem() {
+            percorrerEmOrdem(raiz);
+        }
+
+        private void percorrerEmOrdem (No no){
+            if (no != null) {
+                percorrerEmOrdem(no.esquerdo);
+                System.out.print(no.valor + " ");
+                percorrerEmOrdem(no.direito);
+            }
+
+        }
+    }
+
+
