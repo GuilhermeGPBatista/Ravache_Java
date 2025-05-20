@@ -5,6 +5,9 @@ public class Main {
 
         int totalNos = arvore.contarNos();
         System.out.println("Total de nós na árvore: " + totalNos);
+
+        System.out.print("Percurso em pré-ordem: ");
+        arvore.percorrerPreOrdem();
     }
 }
 
