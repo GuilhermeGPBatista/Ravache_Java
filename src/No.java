@@ -1,11 +1,11 @@
 class No {
     String valor;
-    No esquerdo;
-    No direito;
+    No esquerdo, direito;
+
 
     public No(String valor) {
         this.valor = valor;
-        this.esquerdo = null;
-        this.direito = null;
+        esquerdo = direito = null;
+
     }
 }

@@ -1,31 +1,23 @@
 public class ArvoreBinaria {
     No raiz;
 
-    public ArvoreBinaria() {
-        No noA = new No("A");
-        No noB = new No("B");
-        No noC = new No("C");
-        No noD = new No("D");
-        No noE = new No("E");
-        No noF = new No("F");
-
-        noA.esquerdo = noB;
-        noA.direito = noC;
-
-        noB.esquerdo = noD;
-        noB.direito = noE;
-
-        noC.direito = noF;
-
-        this.raiz = noA;
+    public int contarNos() {
+        return contarNos(raiz);
     }
 
-    // Percurso em pré-ordem (visita raiz -> esquerda -> direita)
-    public void preOrdem(No no) {
-        if (no != null) {
-            System.out.print(no.valor + " ");
-            preOrdem(no.esquerdo);
-            preOrdem(no.direito);
+    private int contarNos(No no) {
+        if (no == null) {
+            return 0;
         }
+        return 1 + contarNos(no.esquerdo) + contarNos(no.direito);
+    }
+
+    public void ArvoreExemplo() {
+        raiz = new No("A");
+        raiz.esquerdo = new No("B");
+        raiz.direito = new No("C");
+        raiz.esquerdo.esquerdo = new No("D");
+        raiz.esquerdo.direito = new No("E");
+        raiz.direito.direito = new No("F");
     }
 }
