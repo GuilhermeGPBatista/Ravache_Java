@@ -1,3 +1,7 @@
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class ArvoreBinaria {
     No raiz;
 
@@ -83,6 +87,84 @@ public class ArvoreBinaria {
         int altEsquerda = altura(no.esquerdo);
         int altDireita = altura(no.direito);
         return 1 + Math.max(altEsquerda, altDireita);
+    }
+
+    public void percorrerPreOrdemIterativo() {
+        if (raiz == null) return;
+
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            System.out.print(atual.valor + " ");
+
+            if (atual.direito != null) {
+                pilha.push(atual.direito);
+            }
+            if (atual.esquerdo != null) {
+                pilha.push(atual.esquerdo);
+            }
+        }
+    }
+
+    public void percorrerEmOrdemIterativo() {
+        Stack<No> pilha = new Stack<>();
+        No atual = raiz;
+
+        while (atual != null || !pilha.isEmpty()) {
+            while (atual != null) {
+                pilha.push(atual);
+                atual = atual.esquerdo;
+            }
+
+            atual = pilha.pop();
+            System.out.print(atual.valor + " ");
+            atual = atual.direito;
+        }
+    }
+
+    public void percorrerPosOrdemIterativo() {
+        if (raiz == null) return;
+
+        Stack<No> pilha1 = new Stack<>();
+        Stack<No> pilha2 = new Stack<>();
+
+        pilha1.push(raiz);
+        while (!pilha1.isEmpty()) {
+            No atual = pilha1.pop();
+            pilha2.push(atual);
+
+            if (atual.esquerdo != null) {
+                pilha1.push(atual.esquerdo);
+            }
+            if (atual.direito != null) {
+                pilha1.push(atual.direito);
+            }
+        }
+
+        while (!pilha2.isEmpty()) {
+            System.out.print(pilha2.pop().valor + " ");
+        }
+    }
+
+    public void percorrerEmNivelIterativo() {
+        if (raiz == null) return;
+
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+
+        while (!fila.isEmpty()) {
+            No atual = fila.poll();
+            System.out.print(atual.valor + " ");
+
+            if (atual.esquerdo != null) {
+                fila.add(atual.esquerdo);
+            }
+            if (atual.direito != null) {
+                fila.add(atual.direito);
+            }
+        }
     }
 }
 
