@@ -11,8 +11,13 @@ public class Main {
 
         System.out.print("\nPercurso em ordem: ");
         arvore.percorrerEmOrdem();
+
+        System.out.print("\nPercurso em pós-ordem: ");
+        arvore.percorrerPosOrdem();
+
+        System.out.print("\nPercurso em nível: ");
+        arvore.percorrerEmNivel();
     }
 }
-
 
 

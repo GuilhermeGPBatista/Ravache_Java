@@ -33,18 +33,58 @@ public class ArvoreBinaria {
         }
     }
 
-        public void percorrerEmOrdem() {
-            percorrerEmOrdem(raiz);
-        }
+    public void percorrerEmOrdem() {
+        percorrerEmOrdem(raiz);
+    }
 
-        private void percorrerEmOrdem (No no){
-            if (no != null) {
-                percorrerEmOrdem(no.esquerdo);
-                System.out.print(no.valor + " ");
-                percorrerEmOrdem(no.direito);
-            }
-
+    private void percorrerEmOrdem(No no) {
+        if (no != null) {
+            percorrerEmOrdem(no.esquerdo);
+            System.out.print(no.valor + " ");
+            percorrerEmOrdem(no.direito);
         }
     }
+
+    public void percorrerPosOrdem() {
+        percorrerPosOrdem(raiz);
+    }
+
+    private void percorrerPosOrdem(No no) {
+        if (no != null) {
+            percorrerPosOrdem(no.esquerdo);
+            percorrerPosOrdem(no.direito);
+            System.out.print(no.valor + " ");
+        }
+    }
+
+    public void percorrerEmNivel() {
+        int altura = altura(raiz);
+        for (int i = 1; i <= altura; i++) {
+            percorrerNivel(raiz, i);
+        }
+    }
+
+    private void percorrerNivel(No no, int nivel) {
+        if (no == null) {
+            return;
+        }
+        if (nivel == 1) {
+            System.out.print(no.valor + " ");
+        } else {
+            percorrerNivel(no.esquerdo, nivel - 1);
+            percorrerNivel(no.direito, nivel - 1);
+        }
+    }
+
+    private int altura(No no) {
+        if (no == null) {
+            return 0;
+        }
+        int altEsquerda = altura(no.esquerdo);
+        int altDireita = altura(no.direito);
+        return 1 + Math.max(altEsquerda, altDireita);
+    }
+}
+
 
 
