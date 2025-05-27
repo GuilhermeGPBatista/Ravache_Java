@@ -166,6 +166,47 @@ public class ArvoreBinaria {
             }
         }
     }
+
+    public int contarNosFolhaRecursivo() {
+        return contarNosFolhaRecursivo(raiz);
+    }
+
+    private int contarNosFolhaRecursivo(No no) {
+        if (no == null) {
+            return 0;
+        }
+        if (no.esquerdo == null && no.direito == null) {
+            return 1; // It's a leaf node
+        }
+        return contarNosFolhaRecursivo(no.esquerdo) + contarNosFolhaRecursivo(no.direito);
+    }
+
+    public int contarNosFolhaIterativo() {
+        if (raiz == null) {
+            return 0;
+        }
+
+        int count = 0;
+        Stack<No> stack = new Stack<>();
+        stack.push(raiz);
+
+        while (!stack.isEmpty()) {
+            No atual = stack.pop();
+
+            if (atual.esquerdo == null && atual.direito == null) {
+                count++;
+            }
+
+            if (atual.direito != null) {
+                stack.push(atual.direito);
+            }
+            if (atual.esquerdo != null) {
+                stack.push(atual.esquerdo);
+            }
+        }
+
+        return count;
+    }
 }
 
 
