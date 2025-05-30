@@ -16,6 +16,30 @@ public class ArvoreBinaria {
         return 1 + contarNos(no.esquerdo) + contarNos(no.direito);
     }
 
+    public int contarNosPilha() {
+        if (raiz == null) {
+            return 0;
+        }
+
+        int count = 0;
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            count++;
+
+            if (atual.direito != null) {
+                pilha.push(atual.direito);
+            }
+            if (atual.esquerdo != null) {
+                pilha.push(atual.esquerdo);
+            }
+        }
+
+        return count;
+    }
+
     public int contarNosFila() {
         if (raiz == null) {
             return 0;
