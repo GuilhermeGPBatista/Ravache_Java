@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         ArvoreBinaria arvore = new ArvoreBinaria();
+        ArvoreAVL arvoreAVL = new ArvoreAVL();
         arvore.ArvoreExemplo();
 
         int totalNos = arvore.contarNos();
@@ -29,8 +30,15 @@ public class Main {
 
         System.out.print("\nPercurso em nível (iterativo): ");
         arvore.percorrerEmNivelIterativo();
-
-        System.out.println();
+        
+        int[] chaves = {10, 20, 30, 40, 50, 25};
+        
+        for (int chave : chaves) {
+            arvoreAVL.raiz = arvoreAVL.inserir(arvoreAVL.raiz, chave);
+        }
+        
+        System.out.print("\nPercurso em ordem (AVL): ");
+        arvoreAVL.percorrerEmOrdem(arvoreAVL.raiz);
     }
 }
 
