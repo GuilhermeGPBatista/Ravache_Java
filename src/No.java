@@ -20,7 +20,7 @@ class No {
         this.valor = null;
         this.chave = chave;
         this.altura = 1;
-        this.cor = Cor.BLACK;
+        this.cor = Cor.RED;
         esquerdo = direito = null;
     }
 }
